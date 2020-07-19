@@ -7,6 +7,8 @@ final class UserConstants
         throw new IllegalStateException("Constants class");
     }
 
+    static final String DB_INDEX_USERS = "users";
+
     static final String USER_NAME = "name";
     static final String USER_EMAIL = "email";
     static final String USER_PASSWORD = "password";

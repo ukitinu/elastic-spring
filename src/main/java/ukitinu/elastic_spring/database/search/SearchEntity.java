@@ -1,8 +1,6 @@
 package ukitinu.elastic_spring.database.search;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import ukitinu.elastic_spring.database.config.Property;
 
 import java.util.ArrayList;
@@ -11,8 +9,6 @@ import java.util.Map;
 
 public class SearchEntity
 {
-    private static final Logger LOG = LoggerFactory.getLogger(SearchEntity.class);
-
     private static final String JSON_SIZE = "size";
     private static final String JSON_FROM = "from";
     private static final String JSON_SORT = "sort";

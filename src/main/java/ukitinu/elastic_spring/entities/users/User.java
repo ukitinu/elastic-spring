@@ -1,7 +1,9 @@
 package ukitinu.elastic_spring.entities.users;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.json.simple.JSONObject;
 import ukitinu.elastic_spring.entities.AbstractEntity;
+import ukitinu.elastic_spring.entities.EntityException;
 import ukitinu.elastic_spring.utils.CommonMethods;
 
 import java.util.Objects;
@@ -111,5 +113,12 @@ public class User extends AbstractEntity
     public String toString()
     {
         return String.format("[%5s] %s:%s", role.name(), name, email);
+    }
+
+    @Override
+    public JSONObject toResponseJson() throws EntityException {
+        JSONObject jo = super.toResponseJson();
+        jo.remove(USER_PASSWORD);
+        return jo;
     }
 }

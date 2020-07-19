@@ -25,7 +25,7 @@ public abstract class AbstractEntityController<E extends AbstractEntity>
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public JSONObject add(@RequestBody Map<String, ?> body) throws EntityException, DatabaseException, RequestException
+    public JSONObject add(@RequestBody Map<String, Object> body) throws EntityException, DatabaseException, RequestException
     {
         JSONObject response = new JSONObject();
         E added = entityService.add(body);
@@ -35,7 +35,7 @@ public abstract class AbstractEntityController<E extends AbstractEntity>
     }
 
     @RequestMapping(value = "/update/{id}", method = RequestMethod.PUT)
-    public JSONObject update(@RequestBody Map<String, ?> body, @PathVariable("id") String id) throws EntityException, DatabaseException, RequestException
+    public JSONObject update(@RequestBody Map<String, Object> body, @PathVariable("id") String id) throws EntityException, DatabaseException, RequestException
     {
         JSONObject response = new JSONObject();
 

@@ -39,6 +39,7 @@ public class EntityService<E extends AbstractEntity>
         E newEntity = mapNewEntity(newObject);
         String id = newEntity.createId();
         newEntity.setId(id);
+        newEntity.setInsertionDate(System.currentTimeMillis());
 
         if (exists(id)) throw new RequestException("Cannot overwrite existing entry", HttpStatus.CONFLICT);
         DB.indexSingle(index, id, newEntity.toJson());
@@ -53,7 +54,7 @@ public class EntityService<E extends AbstractEntity>
         return current;
     }
 
-    public E get(String id) throws DatabaseException, EntityException
+    public E get(String id) throws DatabaseException
     {
         return DB.get(index, id).toEntity(entityClass);
     }
@@ -63,7 +64,7 @@ public class EntityService<E extends AbstractEntity>
         return DB.exists(index, id);
     }
 
-    public E delete(String id) throws DatabaseException, EntityException
+    public E delete(String id) throws DatabaseException
     {
         return exists(id) ? DB.pop(index, id).toEntity(entityClass) : null;
     }
